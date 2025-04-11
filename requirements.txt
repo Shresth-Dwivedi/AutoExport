@@ -1,0 +1,4 @@
+customtkinter
+pillow
+python-docx
+matplotlib
