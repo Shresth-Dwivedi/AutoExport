@@ -114,6 +114,15 @@ You are free to use, modify, and distribute this tool. Just give credit where it
 
 ---
 
+## ⬇️ Download
+
+You can download the latest version of AutoExport here:
+
+👉 [Download .exe from the latest release](https://github.com/Shresth-Dwivedi/AutoExport/releases/latest)
+
+> No installation required. Just download and double-click `autoexport-v1.0.exe`.
+
+
 ## ✨ Author
 
 Made with ❤️ and ☕ by **Shresth Dwivedi**
