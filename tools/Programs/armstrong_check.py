@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 5th April 2025, 13:01
 #filename-> armstrong_check.py
 #Find if the Given Number is Armstrong or Not
