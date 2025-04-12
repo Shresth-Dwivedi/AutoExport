@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 7th April 2025, 00:31
 #filename-> gcd_methods.py
 #GCD (1. Prime factor 2. Long division 3. List of factors)
