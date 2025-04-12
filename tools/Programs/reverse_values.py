@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 6th April 2025, 18:10
 #filename-> reverse_values.py
 #Reverse integer and string
