@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 3rd April 2025, 09:44
 #filename-> area_calculations.py
 #Area of the Triangle, Rectangle, Square, Circle
