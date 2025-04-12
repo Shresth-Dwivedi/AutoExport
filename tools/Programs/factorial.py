@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 6th April 2025, 17:42
 #filename-> factorial.py
 #Factorial (simple and recursive)
