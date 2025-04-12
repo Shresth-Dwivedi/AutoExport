@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 6th April 2025, 13:12
 #filename-> fibonacci_series.py
 #Print Fibonacci Series
