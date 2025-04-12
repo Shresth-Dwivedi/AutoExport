@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 5th April 2025, 10:59
 #filename-> sum_of_digits.py
 #Sum of the digits – ex. Input - 456, Output - 15
