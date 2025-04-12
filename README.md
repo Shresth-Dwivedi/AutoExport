@@ -79,7 +79,7 @@ AutoExport/
 
 ---
 
-## ❤️ Support
+## ☕ Support
 
 If this tool helped you, consider supporting the creator 🙏
 
@@ -120,7 +120,9 @@ You can download the latest version of AutoExport here:
 
 👉 [Download .exe from the latest release](https://github.com/Shresth-Dwivedi/AutoExport/releases/latest)
 
-> No installation required. Just download and double-click `autoexport-v1.0.exe`.
+> 📦 **No Python installation is required to run the `.exe` version.**  
+> Just download and double-click `autoexport-v1.0.exe` — it works out of the box.
+
 
 
 ## ✨ Author
