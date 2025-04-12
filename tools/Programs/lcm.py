@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 7th April 2025, 01:12
 #filename-> lcm.py
 #Lowest Common Multiple
