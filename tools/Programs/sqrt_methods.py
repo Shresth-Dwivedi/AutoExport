@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 6th April 2025, 22:55
 #filename-> sqrt_methods.py
 #Square root (1. By prime factor 2. By division)
