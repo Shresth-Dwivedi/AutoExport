@@ -1,4 +1,4 @@
-#editedby-> Kunj Bhardwaj
+#editedby-> Shresth Dwivedi
 #editedon-> 4th April 2025, 08:25
 #filename-> odd_or_even.py
 #Find if the Given Number is ODD or Even
