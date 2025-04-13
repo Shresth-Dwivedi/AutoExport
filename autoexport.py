@@ -726,23 +726,15 @@ def modern_gui():
     # Create a frame to center everything
     credit_frame = ctk.CTkFrame(app, fg_color="transparent")
     credit_frame.place(relx=0.5, rely=0.94, anchor="n")
-    # Load heart image
-    heart_img = ctk.CTkImage(
-        dark_image=Image.open("icons/heart.png"),
-        light_image=Image.open("icons/heart.png"),
-        size=(16, 16)
+    
+    # Copyright label
+    copyright_label = ctk.CTkLabel(
+        credit_frame,
+        text="© 2025 Shresth Dwivedi. All rights reserved.",
+        text_color="white",
+        font=("Segoe UI", 11)
     )
-    # First label: "Made with"
-    label_left = ctk.CTkLabel(credit_frame, text="Made with ", text_color="white", font=("Segoe UI", 11))
-    # Image label
-    label_heart = ctk.CTkLabel(credit_frame, text="", image=heart_img)
-    # Third label: " by Shresth Dwivedi"
-    label_right = ctk.CTkLabel(credit_frame, text=" by Shresth Dwivedi", text_color="white", font=("Segoe UI", 11))
-    # Layout in a row
-    label_left.pack(side="left")
-    label_heart.pack(side="left")
-    label_right.pack(side="left")
-
+    copyright_label.pack()
 
     refresh_file_list()
     app.mainloop()
