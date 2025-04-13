@@ -107,10 +107,20 @@ These icons are used under their respective free-use licenses, such as the [Crea
 > If you're a creator and see your icon used here, feel free to contact me for additional credit or changes.
 
 
-## 📄 License
+## 📄 License & Attribution
 
-MIT License.  
-You are free to use, modify, and distribute this tool. Just give credit where it’s due 🙂
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, and distribute this tool.  
+However, as the sole creator and maintainer of AutoExport, I kindly ask that you:
+
+- Do **not rebrand or resell** this project without giving proper credit.
+- Keep attribution visible in any distributed version.
+- Link back to the original GitHub repository when possible.
+
+> This helps support individual developers who build in the open.
+
+📜 Full license terms can be found in the [LICENSE](LICENSE) file.
 
 ---
 
