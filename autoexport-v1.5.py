@@ -42,7 +42,7 @@ def check_for_update(local_version="2.0.0"):
             latest_version = response.read().decode("utf-8").strip()
 
         if latest_version != local_version:
-            return f"🔔 Update available: v{latest_version}"
+            return f"Update available: v{latest_version}"
         return None
     except Exception:
         return None
@@ -767,6 +767,7 @@ def modern_gui():
     app.resizable(False, False)
 
     # Icons for labels and buttons
+    bell_icon = ctk.CTkImage(Image.open(resource_path("icons/bell.png")), size=(16, 16))
     clipboard_icon = ctk.CTkImage(Image.open(resource_path("icons/clip.png")), size=(16, 16))
     checkmark_icon = ctk.CTkImage(Image.open(resource_path("icons/check.png")), size=(16, 16))
     back_icon = ctk.CTkImage(Image.open(resource_path("icons/back.png")), size=(16, 16))
@@ -1016,7 +1017,7 @@ def modern_gui():
     search_entry.grid(row=4, column=0, columnspan=2, padx=(10), pady=(10, 5), sticky="w")
     search_entry.bind("<KeyRelease>", refresh_file_list)
 
-    toggle_btn = ctk.CTkButton(search_row, width=36, height=30, text="", image=checkmark_icon, command=toggle_select_all, fg_color="#333333")
+    toggle_btn = ctk.CTkButton(search_row, width=36, height=30, text="", image=checkmark_icon, command=toggle_select_all)
     toggle_btn.grid(row=4, column=2, padx=(0,10), pady=(10, 5), sticky="ew")
 
     sort_options = [
@@ -1032,7 +1033,7 @@ def modern_gui():
         command=refresh_file_list
     )
     sort_selector.set("Date Modified")
-    sort_selector.grid(row=4, column=1, columnspan=1, padx=20, pady=(10, 5), sticky="e")
+    sort_selector.grid(row=4, column=1, columnspan=1, padx=21, pady=(10, 5), sticky="e")
 
     scroll_frame = ctk.CTkScrollableFrame(main_frame, height=200)
     scroll_frame.grid(row=5, column=0, columnspan=3, padx=20, pady=(5, 15), sticky="nsew")
@@ -1044,11 +1045,11 @@ def modern_gui():
     progress_bar.place(relx=0.5, rely=0.89, anchor="center", relwidth=0.85)
     progress_bar.set(0)
     progress_bar.configure(determinate_speed=1)
-    progress_bar.place_forget()  # hide initially
+    progress_bar.place_forget()
 
     status_label = ctk.CTkLabel(app, text="", font=("Segoe UI", 12), text_color="green")
     status_label.place(relx=0.5, rely=0.92, anchor="center")  
-    status_label.lower()  # Hide initially
+    status_label.lower() 
 
     # FRAME 2: DETAILS FRAME
     details_frame = ctk.CTkFrame(app, corner_radius=12)
@@ -1075,7 +1076,6 @@ def modern_gui():
     back_btn = ctk.CTkButton(details_frame, text="Back", image=back_icon, command=back_to_main)
     back_btn.grid(row=7, column=0, columnspan=2, padx=20, pady=(0, 20), sticky="ew")
 
-    # --- Function to copy UPI ID ---
     def copy_upi_to_clipboard():
         app.clipboard_clear()
         app.clipboard_append("shresthdwivedi03@axl")
@@ -1084,11 +1084,9 @@ def modern_gui():
         copy_btn.configure(text=" Copied!", image=checkmark_icon, fg_color="green", hover_color="green")
         app.after(2000, lambda: copy_btn.configure(text=" Copy UPI", image=clipboard_icon, fg_color="#2b2b2b",hover_color="#144870"))
 
-    # --- Framed donation section ---
     donation_frame = ctk.CTkFrame(details_frame, fg_color="#333333", corner_radius=10)
     donation_frame.grid(row=10, column=0, columnspan=2, pady=(115, 10), padx=20, sticky="ew")
 
-    # --- UPI Support Text ---
     support_label = ctk.CTkLabel(
         donation_frame,
         text="Support via UPI or follow me here:",
@@ -1106,7 +1104,6 @@ def modern_gui():
     )
     upi_id_label.pack(pady=(0, 5))
     
-    # --- Copy Button ---
     copy_btn = ctk.CTkButton(
         donation_frame,
         text=" Copy UPI",
@@ -1118,11 +1115,8 @@ def modern_gui():
     )
     copy_btn.pack(pady=(0, 10))
 
-
-    # --- Tooltip on hover ---
     attach_tooltip(copy_btn, "Click to copy UPI ID")
 
-    # --- Social Icons inside UPI frame ---
     social_frame = ctk.CTkFrame(donation_frame, fg_color="transparent")
     social_frame.pack(pady=(5, 10))
 
@@ -1136,12 +1130,12 @@ def modern_gui():
     linkedin_btn.pack(side="left", padx=20, pady=(15,0))
     linkedin_btn.bind("<Button-1>", lambda e: webbrowser.open("https://www.linkedin.com/in/shresth-dwivedi/"))
 
-    # GitHub icon button
+    # Twitter icon button
     x_btn = ctk.CTkLabel(social_frame, text="", image=X_icon, cursor="hand2")
     x_btn.pack(side="left", padx=20, pady=(15,0))
     x_btn.bind("<Button-1>", lambda e: webbrowser.open("https://x.com/theDavyDee"))
 
-    # Create a frame to center everything
+    # Frame to center everything
     credit_frame = ctk.CTkFrame(app, fg_color="transparent")
     credit_frame.place(relx=0.5, rely=0.94, anchor="n")
     
@@ -1157,35 +1151,41 @@ def modern_gui():
     refresh_file_list()
 
     def show_update_popup():
-        update_msg = check_for_update("1.0")
+        update_msg = check_for_update("1.5")
         if not update_msg:
             return
 
-        popup = ctk.CTkLabel(
+        popup = ctk.CTkButton(
             app,
             text=update_msg,
+            image=bell_icon,
             text_color="white",
             fg_color="orange",
+            hover_color="orange",
             corner_radius=8,
             font=("Segoe UI", 11),
             cursor="hand2"
         )
-        
-        popup.place(relx=0.5, rely=-0.1, anchor="n")  # Start above the window
+
+        popup.place(relx=0.5, rely=-0.1, anchor="n") 
 
         def open_release(event=None):
             webbrowser.open_new_tab("https://github.com/Shresth-Dwivedi/AutoExport/releases/latest")
 
         popup.bind("<Button-1>", open_release)
 
-        def animate(step=0):
-            new_y = -0.1 + (step * 0.07) 
-            popup.place_configure(rely=new_y)
-            if new_y < 0.07:
-                app.after(15, lambda: animate(step + 0.1))
+        def animate(step=0, reverse=False):
+            if reverse:
+                new_y = 0.07 - (step * 0.07)
             else:
-                popup.place_configure(rely=0.07)
-                app.after(10000, popup.destroy)  # Auto-hide after 10s
+                new_y = -0.1 + (step * 0.07)
+
+            popup.place_configure(rely=new_y)
+
+            if (not reverse and new_y < 0.07) or (reverse and new_y > -0.1):
+                app.after(15, lambda: animate(step + 0.1, reverse))
+            elif not reverse:
+                app.after(10000, lambda: animate(0, reverse=True))
 
         animate()
 
