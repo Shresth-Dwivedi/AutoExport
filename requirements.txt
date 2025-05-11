@@ -2,3 +2,4 @@ customtkinter
 pillow
 python-docx
 matplotlib
+cairosvg
