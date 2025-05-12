@@ -36,6 +36,16 @@ SWP_NOZORDER = 0x0004
 WM_NCLBUTTONDOWN = 0x00A1
 HTCAPTION = 2
 
+def resource_path(relative_path):
+    try:
+        if getattr(sys, 'frozen', False):
+            return os.path.join(sys._MEIPASS, relative_path)
+        else:
+            return os.path.join(os.path.abspath("."), relative_path)
+    except Exception as e:
+        print(f"Error while accessing resource path: {e}")
+        return None
+
 def get_base_dir():
     if getattr(sys, 'frozen', False):
         return os.path.dirname(sys.executable)
@@ -163,16 +173,18 @@ def theme_selection_popup():
             show_restart_prompt()
 
     def restart_app():
-        if getattr(sys, 'frozen', False): 
+        if getattr(sys, 'frozen', False):
             executable = sys.executable
-            subprocess.Popen([executable])
+            # Delay execution to allow current app to exit cleanly
+            subprocess.Popen([executable], close_fds=True)
         else:
             python = sys.executable
             script = os.path.abspath(sys.argv[0])
-            subprocess.Popen([python, script, *sys.argv[1:]])
+            subprocess.Popen([python, script, *sys.argv[1:]], close_fds=True)
 
-        time.sleep(0.2)
-        sys.exit()
+        # Exit after a short delay to avoid clashing with subprocess launch
+        threading.Thread(target=lambda: (time.sleep(0.5), os._exit(0))).start()
+
     
     def show_restart_prompt():
         popup = ctk.CTkToplevel()
@@ -309,11 +321,6 @@ def check_for_update(local_version="2.3"):
         return None
     except Exception:
         return None
-
-def resource_path(relative_path):
-    if hasattr(sys, '_MEIPASS'):
-        return os.path.join(sys._MEIPASS, relative_path)
-    return os.path.join(os.path.abspath("."), relative_path)
 
 def load_config():
     if os.path.exists(CONFIG_FILE):
@@ -659,7 +666,7 @@ def execute_with_input_detection(cmd_list, program_name, force_terminal=False, t
         terminal = create_terminal_window(program_name)
         show_terminal = True
 
-    process = Popen(cmd_list, stdin=PIPE, stdout=PIPE, stderr=PIPE, text=True, bufsize=0)
+    process = Popen(cmd_list, stdin=PIPE, stdout=PIPE, stderr=PIPE, text=True, bufsize=0,  creationflags=subprocess.CREATE_NO_WINDOW)
 
     def read_stream(stream, tag):
         for chunk in iter(lambda: stream.read(1), ''):
@@ -891,7 +898,7 @@ def run_files_and_capture_output(file_paths):
                 app.update_idletasks()
                 output_dir = os.path.dirname(get_compiled_path("java", "dummy.class"))
                 compile_cmd = ["javac", "-d", output_dir, path]
-                compile_proc = subprocess.run(compile_cmd, capture_output=True, text=True)
+                compile_proc = subprocess.run(compile_cmd, capture_output=True, text=True, creationflags=subprocess.CREATE_NO_WINDOW)
                 if compile_proc.stderr:
                     buffer.write("Compile error:\n" + compile_proc.stderr)
                 else:
@@ -918,7 +925,7 @@ def run_files_and_capture_output(file_paths):
                 elif ext == ".rs":
                     compile_cmd = ["rustc", path, "-o", output_path]
 
-                subprocess.run(compile_cmd, capture_output=True)
+                subprocess.run(compile_cmd, capture_output=True, creationflags=subprocess.CREATE_NO_WINDOW)
                 if os.path.exists(output_path):
                     status_label.configure(text=f"Running {filename}")
                     app.update_idletasks()
@@ -1044,7 +1051,7 @@ class App(ctk.CTk):
         super().__init__()
 
         #icon for the app
-        icon_path = resource_path(os.path.join("assets/icons", "app.ico"))
+        icon_path = resource_path(os.path.join("assets/icons/", "app.ico"))
         self.after(1000,self.iconbitmap(default=icon_path))
 
         window_width = 850
