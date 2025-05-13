@@ -1,79 +1,90 @@
 # 🚀 AutoExport
 
-AutoExport is a Python-based GUI application that helps you export your programming assignments (Python, C++, Java, etc.) into a neatly formatted Word `.docx` document — complete with code, outputs, and visuals. It’s designed for students and developers who want to generate clean submission-ready documents with just a few clicks.
+AutoExport is a sleek, modern GUI tool for Windows that lets you batch export your programming assignments into a clean, formatted Word document. It automatically executes your code, captures outputs (including plots from `matplotlib`), and supports multiple languages like Python, Java, C++, C, JavaScript, Go, Ruby, PHP and C#.
 
 ---
 
 ## 🎯 Features
 
 - ✅ CustomTkinter-based modern GUI
-- 📄 Exports code from multiple languages into `.docx`
-- 🖼️ Embeds execution output and generated visuals (currently only Python and matplotlib supported for output generation)
-- 📝 Adds instructor, course, semester metadata
-- 📁 Auto-select files and customize export folder
-- 🔍 Optional CLI runner for batch testing
+- 🧠 Smart language detection (Python, Java, C, C++, JavaScript, Go, and more)
+- ⚙️ Auto-compilation and execution of code files
+- 📦 Supports user input detection during execution
+- 📸 Visual output capturing via `matplotlib`
+- 📄 Generates professional `.docx` reports with:
+  - User metadata
+  - Code blocks
+  - Outputs
+  - Auto-added visual results
+- 🔍 Built-in file browser with sorting, searching, and filtering
 
 ---
 
-## 📦 Requirements
+## 🛠 Requirements
 
-Install dependencies with:
+### For `.exe` version (Windows 64-bit installer)
 
-```bash
+- Operating System: Windows XP or older (64-bit)
+- Language Runtimes/Compilers: Ensure the necessary compilers or interpreters for the supported programming languages are installed and properly added to your system's PATH environment variable.
+
+>⚠️ AutoExport relies on your system's installed compilers or interpreters to build and execute code of the language you wish to export to the document. Without these language runtimes, the application will not generate outputs.
+
+You can export programs of the following languages:
+
+        Supported Languages: Python, Java, C++, C, C#, Go, JavaScript, Ruby, PHP
+
+>⚠️ You only need the runtime tools for the language(s) you wish to use the application with. 
+>
+> If you wish to use the application **only for `.py` programs**, you may ignore these instructions.
+
+### Installation
+
+Download the latest Windows installer `autoexport-2.3-windows-setup-x64.exe` from the [Releases](https://github.com/Shresth-Dwivedi/AutoExport/releases) page and run the setup.
+
+>⚠️ This is specifically for 64-bit systems, running Windows XP or older.
+
+---
+
+### For `.py` version (manual run via Python)
+
+- Operating System: Windows XP or older
+- Python 3.10 or higher (Recommended: Python 3.12+)
+- Clone the repository:
+  ```bash
+  git clone https://github.com/Shresth-Dwivedi/AutoExport.git
+  cd AutoExport
+
+#### Install dependencies from requirements.txt:
+```
 pip install -r requirements.txt
 ```
-
-**Minimum requirements:**
-
+Your ***requirements.txt*** should include:
 ```
 customtkinter
 pillow
 python-docx
 matplotlib
+cairosvg
 ```
+#### Additional tools (based on language):
 
----
+**Language Runtimes/Compilers:** Ensure the necessary compilers or interpreters for the supported programming languages are installed and properly added to your system's PATH environment variable.
 
-## 🚀 How to Run
-
-### GUI App:
-
-```bash
-python autoexport.py
-```
-
-### CLI Tool (optional):
-
-### `tools/cli_runner.py`
-
-A command-line interface utility that executes selected `.py` files from the `Programs/` directory **and its subfolders**.
-
-- Displays a list of available programs with indexed selection.
-- Supports optional logging of output and time taken.
-- Automatically installs `colorama` if missing.
-(More language support in new versions soon!)
-
----
 
 ## 📁 Project Structure
 
 ```
 AutoExport/
-│
-├── autoexport.py              # Main GUI application for exporting assignments
-├── LICENSE                    # MIT License information
-├── README.md                  # Main README with usage and setup instructions
-├── requirements.txt           # Python dependencies for the project
-│
-├── icons/                     # Contains icons used in the GUI
-│   └── (multiple icon files...)
-│
-├── tools/                     # Additional tools and command-line utilities
-│   ├── cli_runner.py          # CLI tool to run programs and collect outputs
-│   ├── README.txt             # Info and usage for cli_runner.py
-│   └── Programs/              # Sample/test Python programs for CLI testing
-│
-└── ...
+├── assets/ 
+│ ├── buddy/ 
+│ ├── icons/ 
+│ └── themes/
+├── .gitignore 
+├── autoexport.py 
+├── LICENSE 
+├── README.md 
+├── requirements.txt 
+└── version.txt 
 
 ```
 
@@ -81,39 +92,42 @@ AutoExport/
 
 ## ❤️ Support
 
-If this tool helped you, consider supporting the creator 🙏
+If this application helped you, consider donating 🙏
 
 **UPI ID:** `shresthdwivedi03@axl`
 
-You can also connect:
+You can also connect through social media:
 
-- [GitHub](https://github.com/Shresth-Dwivedi)
 - [LinkedIn](https://linkedin.com/in/shresth-dwivedi)
 - [X](https://x.com/theDavyDee)
+- [BlueSky](https://bsky.app/profile/shresthdwivedi.bsky.social)
 
 ---
 
 ## 🎨 Icon Credits
 
-This project uses custom and original icons sourced from the following platforms:
-
-- [Flaticon](https://www.flaticon.com/)
-- [Freeicons.io](https://freeicons.io/)
+This project uses custom and original icons sourced from [Apple SF Regular Filled](https://icons8.com/icons/sf-regular-filled) icon pack from [Icons8](https://icons8.com/).
 
 Some icons have been modified (e.g., resized, recolored) to better match the app's UI.
 
-These icons are used under their respective free-use licenses, such as the [Creative Commons Attribution 4.0 License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/), which allows adaptation with attribution.
+These icons are used under the [**Universal Multimedia Licensing Agreement (UMLA)**]((https://icons8.com/vue-static/landings/pricing/icons8-license.pdf#:~:text=Universal%20Multimedia%20Licensing%20Agreement%20(%22Agreement%22%2C%20or%20%22License%22):,and%20content%20with%20certain%20provisions%20or%20restrictions.&text=If%20a%20Licensee%20or%20User%20shall%20have,any%20time%2C%20an%20%22Enterprise%22%20License%20is%20required.)) for Icons8, which allows adaptation with attribution.
 
 > If you're a creator and see your icon used here, feel free to contact me for additional credit or changes.
 
 
 ## 📄 License
 
-MIT License.  
-You are free to use, modify, and distribute this tool. Just give credit where it’s due 🙂
+**AutoExport License v2.3 – Non-Commercial, No-Derivatives**
+
+This software is licensed for **personal and educational use only**. You are permitted to use, copy, and share the software as-is, provided that proper credit is given. **Commercial use, redistribution for profit, modification, reverse engineering, or creation of derivative works is strictly prohibited.** All distributed copies must retain the original license and author attribution.
+
+>For full details, please refer to the [LICENSE](https://github.com/Shresth-Dwivedi/AutoExport/blob/main/LICENSE) file in the repository (also included in the installed version of the application).
+
+For questions, contributions, or feedback, contact: shresthdwivedi@yahoo.com
+
 
 ---
 
 ## ✨ Author
 
-Made with ❤️ and ☕ by **Shresth Dwivedi**
+Made with ❤️ and ☕ by [**Shresth Dwivedi**](https://github.com/Shresth-Dwivedi)

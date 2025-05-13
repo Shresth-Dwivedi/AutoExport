@@ -1207,7 +1207,7 @@ def modern_gui():
 
     github_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/gitHub-light.png")), size=(32, 32))
     linkedin_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/linkedin-light.png")), size=(32, 32))
-    X_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/X-light.png")), size=(32, 32))
+    X_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/X-light.png")), size=(20, 20))
     bluesky_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/bluesky-light.png")), size=(32, 32))
     youtube_light_icon = ctk.CTkImage(Image.open(resource_path("assets/icons/youtube-light.png")), size=(32, 32))
 
@@ -1308,7 +1308,7 @@ def modern_gui():
         checkboxes.clear()
 
         folders = prog_folder_entry.get().strip().split(";")
-        SUPPORTED_EXTS = (".py", ".java", ".cpp", ".c", ".js", ".html", ".css", ".go", ".rb", ".php", ".cs", ".sh", ".rs")
+        SUPPORTED_EXTS = (".py", ".java", ".cpp", ".c", ".js", ".go", ".rb", ".php", ".cs")
 
         files = []
         for folder in folders:
@@ -1332,8 +1332,7 @@ def modern_gui():
             lang = sort_option.split(": ")[1].lower()
             ext_map = {
                 "python": ".py", "java": ".java", "c++": ".cpp", "c": ".c",
-                "javascript": ".js", "typescript": ".ts", "html": ".html", "css": ".css",
-                "go": ".go", "ruby": ".rb", "php": ".php", "c#": ".cs", "shell": ".sh", "rust": ".rs"
+                "javascript": ".js", "go": ".go", "ruby": ".rb", "php": ".php", "c#": ".cs"
             }
             ext = ext_map.get(lang)
             if ext:
@@ -1495,9 +1494,8 @@ def modern_gui():
     
     sort_options = [
         "Date Modified", "File Size",
-        "Language: Python", "Language: Java", "Language: C++", "Language: C",
-        "Language: JavaScript", "Language: HTML", "Language: CSS",
-        "Language: Go", "Language: Ruby", "Language: PHP", "Language: C#", "Language: Shell", "Language: Rust"
+        "Language: Python", "Language: Java", "Language: C++", "Language: C", "Language: JavaScript", 
+        "Language: Go", "Language: Ruby", "Language: PHP", "Language: C#"
     ]
     sort_selector = ctk.CTkOptionMenu(
         master=search_row,
@@ -1762,7 +1760,7 @@ def modern_gui():
 
     terms_label = ctk.CTkLabel(
         credit_frame,
-        text="Terms & Conditions.",
+        text="Terms & Conditions",
         cursor="hand2",
         font=ctk.CTkFont("Segoe UI", 11, underline=True)
     )
